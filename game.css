@@ -1,0 +1,242 @@
+:root {
+  color-scheme: dark;
+  background: #102b20;
+  color: #fff8df;
+  font-family: "Trebuchet MS", system-ui, sans-serif;
+}
+
+body {
+  display: grid;
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0;
+  place-items: center;
+  overflow: hidden;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.stage {
+  position: relative;
+  width: min(100vw, 133.02668vh);
+  width: min(100vw, 133.02668dvh);
+  aspect-ratio: 1446 / 1087;
+  container-type: inline-size;
+  overflow: hidden;
+  user-select: none;
+}
+
+.scene, .clock-face, .play-screen {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.scene, .clock-face, .target-time {
+  pointer-events: none;
+}
+
+.clock-face {
+  touch-action: none;
+}
+
+.hand-hit {
+  fill: none;
+  stroke: transparent;
+  stroke-linecap: round;
+  stroke-width: 110;
+  touch-action: none;
+}
+
+.clock-face.is-interactive .hand-hit {
+  pointer-events: stroke;
+  cursor: grab;
+}
+
+.clock-face.is-dragging .hand-hit {
+  cursor: grabbing;
+}
+
+.target-time {
+  position: absolute;
+  left: 42.45%;
+  top: 60.9%;
+  width: 15.24%;
+  height: 6.9%;
+  overflow: hidden;
+}
+
+button {
+  padding: 0;
+  border: 0;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+button:focus-visible {
+  outline: 3px solid #fff8df;
+  outline-offset: 3px;
+}
+
+.sound-button {
+  position: absolute;
+  left: 3.7344%;
+  top: 2.8519%;
+  width: 8.2988%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: transparent;
+}
+
+.sound-button:disabled {
+  pointer-events: none;
+}
+
+.sound-button img {
+  position: relative;
+  display: none;
+  width: 100%;
+  height: 100%;
+}
+
+.sound-button[aria-pressed="true"]::before {
+  position: absolute;
+  inset: 17% 14% 19% 18%;
+  border-radius: 50%;
+  background: linear-gradient(#764aff, #471ee2);
+  content: "";
+}
+
+.sound-button[aria-pressed="true"] img {
+  display: block;
+}
+
+.round-hud {
+  position: absolute;
+  bottom: 2%;
+  left: 50%;
+  display: grid;
+  grid-template-columns: auto 6.3em auto;
+  align-items: center;
+  gap: .6em;
+  transform: translateX(-50%);
+  padding: .35em .75em;
+  border: 1px solid #68865d;
+  border-radius: 999px;
+  background: #122c20;
+  color: #fff8df;
+  font-size: 16px;
+  font-size: clamp(12px, 2.35cqw, 29px);
+  font-weight: 700;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.round-progress {
+  display: grid;
+  gap: .18em;
+  line-height: 1.1;
+}
+
+.round-progress progress {
+  display: block;
+  width: 100%;
+  height: .2em;
+  appearance: none;
+  overflow: hidden;
+  border: 0;
+  border-radius: 999px;
+  background: #3a5844;
+  color: #f8d478;
+}
+
+.round-progress progress::-webkit-progress-bar { background: #3a5844; }
+.round-progress progress::-webkit-progress-value { background: #f8d478; }
+.round-progress progress::-moz-progress-bar { background: #f8d478; }
+
+.round-status {
+  margin: 0;
+  padding: .24em 0;
+  border-radius: 999px;
+  color: #e6efcc;
+  text-align: center;
+}
+
+.round-status.is-correct {
+  background: #24612b;
+  color: #fff8df;
+}
+
+.game-timer {
+  min-width: 4ch;
+  padding-inline-start: .6em;
+  border-inline-start: 1px solid #68865d;
+  color: #ffdc76;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .round-status.is-correct {
+    animation: celebrate .36s ease-out;
+  }
+}
+
+@keyframes celebrate {
+  45% {
+    transform: scale(1.07);
+    box-shadow: 0 0 .55em rgb(148 218 105 / 55%);
+  }
+}
+
+.play-screen {
+  display: grid;
+  place-items: center;
+  background: rgb(8 32 22 / 56%);
+  text-align: center;
+}
+
+.play-card {
+  width: max-content;
+  max-width: 88%;
+  box-sizing: border-box;
+  padding: 2.6cqw 4.6cqw 1.3cqw;
+  border: 2px solid #95b56a;
+  border-radius: 2.6cqw;
+  background: #163b27;
+  box-shadow: 0 .6cqw 2cqw rgb(0 0 0 / 33%);
+  font-size: 18px;
+  font-size: clamp(14px, 3.05cqw, 38px);
+}
+
+.play-card h1 {
+  margin: 0;
+  color: #ffdc76;
+  font-size: 1.65em;
+}
+
+.play-card p {
+  margin: .35em 0 0;
+}
+
+.play-button {
+  display: block;
+  width: 17cqw;
+  min-width: 68px;
+  margin: .15em auto 0;
+  border-radius: 50%;
+  background: radial-gradient(circle closest-side, #32683d 79%, transparent 80%);
+}
+
+.play-button:hover {
+  background: radial-gradient(circle closest-side, #41834d 79%, transparent 80%);
+}
+
+.play-button img {
+  display: block;
+  width: 100%;
+  height: auto;
+}

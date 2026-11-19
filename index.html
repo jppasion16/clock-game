@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Set the Clock</title>
+  <link rel="icon" href="start.png" type="image/png">
+  <link rel="stylesheet" href="game.css">
+  <script defer src="clock-game-assets/seven-segment.js"></script>
+  <script defer src="game.js"></script>
+</head>
+<body>
+  <main class="stage" aria-label="Set the Clock game">
+    <img class="scene" src="clock-game-assets/background-with-empty-display.png" alt="" draggable="false">
+
+    <svg id="clock-face" class="clock-face" viewBox="0 0 1446 1087" role="img" aria-label="Analog clock">
+      <defs>
+        <mask id="readout-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="1446" height="1087">
+          <rect width="1446" height="1087" fill="white" />
+          <rect x="609" y="656" width="229" height="85" rx="18" fill="#303030" />
+        </mask>
+      </defs>
+      <g mask="url(#readout-mask)">
+        <g transform="translate(724 550)">
+          <g id="minute-hand" transform="rotate(0)">
+            <image href="clock-game-assets/minute-hand-upright.png" x="-150" y="-270" width="300" height="300" />
+            <path class="hand-hit" data-hand="minute" d="M 0 -109 V -215" />
+          </g>
+          <g id="hour-hand" transform="rotate(120)">
+            <image href="clock-game-assets/hour-hand-upright.png" x="-150" y="-270" width="300" height="300" />
+            <path class="hand-hit" data-hand="hour" d="M 0 -109 V -156" />
+          </g>
+          <image href="clock-game-assets/center-pivot.png" x="-52" y="-52" width="104" height="104" />
+        </g>
+      </g>
+    </svg>
+
+    <div id="target-time" class="target-time" aria-live="polite"></div>
+    <button id="sound-button" class="sound-button" type="button" aria-label="Mute sound" aria-pressed="false" disabled>
+      <img src="clock-game-assets/sound-off-icon.svg" alt="" draggable="false">
+    </button>
+    <div id="round-hud" class="round-hud" hidden>
+      <div class="round-progress">
+        <span id="round-label"></span>
+        <progress id="round-progress" max="10" value="0" aria-label="Rounds completed"></progress>
+      </div>
+      <p id="round-status" class="round-status" role="status"></p>
+      <span id="game-timer" class="game-timer" role="timer" aria-label="Solving time">0:00</span>
+    </div>
+
+    <section id="play-screen" class="play-screen" aria-labelledby="screen-title">
+      <div class="play-card">
+        <h1 id="screen-title">Set the Clock</h1>
+        <p id="screen-message">Drag the hands to match the time.</p>
+        <button id="play-button" class="play-button" type="button" aria-label="Play">
+          <img src="start.png" width="500" height="500" alt="" draggable="false">
+        </button>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

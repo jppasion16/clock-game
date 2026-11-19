@@ -1,0 +1,71 @@
+{
+  "source": "REFERENCE IMAGE.png from employer trial folder",
+  "canvas": {
+    "width": 1446,
+    "height": 1087,
+    "aspect_ratio": 1.33027
+  },
+  "clock_pivot": {
+    "x": 724,
+    "y": 550
+  },
+  "hour_hand": {
+    "file": "hour-hand-upright.png",
+    "color": "red",
+    "sprite_width": 300,
+    "sprite_height": 300,
+    "pivot_x": 150,
+    "pivot_y": 270,
+    "css_transform_origin": "150px 270px",
+    "zero_degrees_points_to": "12"
+  },
+  "minute_hand": {
+    "file": "minute-hand-upright.png",
+    "color": "blue",
+    "sprite_width": 300,
+    "sprite_height": 300,
+    "pivot_x": 150,
+    "pivot_y": 270,
+    "css_transform_origin": "150px 270px",
+    "zero_degrees_points_to": "12"
+  },
+  "pivot_cap": {
+    "file": "center-pivot.png",
+    "top_left": {
+      "x": 672,
+      "y": 498
+    },
+    "dimensions": {
+      "width": 104,
+      "height": 104
+    }
+  },
+  "digital_display": {
+    "file": "digital-display-empty.png",
+    "top_left": {
+      "x": 588,
+      "y": 633
+    },
+    "dimensions": {
+      "width": 271,
+      "height": 118
+    },
+    "overlay": "seven-segment.js"
+  },
+  "sound_button": {
+    "file": "sound-on.png",
+    "top_left": {
+      "x": 54,
+      "y": 31
+    },
+    "dimensions": {
+      "width": 120,
+      "height": 120
+    }
+  },
+  "background_note": "background-no-clock-parts.png retains original sound button; place sound-on/off asset over it. background-with-empty-display.png includes the empty digital bezel.",
+  "web_object_entry": "index.html",
+  "background_display": "background-with-empty-display.png",
+  "background_scene": "background-no-clock-parts.png",
+  "clock_rotation": "hour_angle = totalMinutes * 0.5; minute_angle = totalMinutes * 6 (degrees clockwise; 12 is 0 degrees)"
+}
